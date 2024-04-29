@@ -1,36 +1,36 @@
 class Person:
     TITLES = ('Dr', 'Mr', 'Mrs', 'Ms')
 
-    def __init__(self, name, surname):
-        self.name = name
-        self.surname = surname
+    def __init__(self, nama, nama_belakang):
+        self.nama = nama
+        self.nama_belakang = nama_belakang
 
-    def fullname(self): # instance method
-        # instance object accessible through self
-        return "%s %s" % (self.name, self.surname)
+    def nama_lengkap(self):  # metode instance
+        # objek instance dapat diakses melalui self
+        return "%s %s" % (self.nama, self.nama_belakang)
         
     @property
-    def fullname2(self):
-        return "%s %s" % (self.name, self.surname)
+    def nama_lengkap2(self):
+        return "%s %s" % (self.nama, self.nama_belakang)
 
     @classmethod
-    def allowed_titles_starting_with(cls, startswith): # class method
-        # class or instance object accessible through cls
-        return [t for t in cls.TITLES if t.startswith(startswith)]
+    def judul_diperbolehkan_yang_dimulai_dengan(cls, dimulai_dengan):  # metode class
+        # objek class atau instance dapat diakses melalui cls
+        return [t for t in cls.TITLES if t.startswith(dimulai_dengan)]
     
     @staticmethod
-    def allowed_titles_ending_with(endswith): # static method
-        # no parameter for class or instance object
-        # we have to use Person directly
-        return [t for t in Person.TITLES if t.endswith(endswith)]
+    def judul_diperbolehkan_yang_berakhir_dengan(berakhir_dengan):  # metode statis
+        # tidak ada parameter untuk objek class atau instance
+        # kita harus menggunakan Person secara langsung
+        return [t for t in Person.TITLES if t.endswith(berakhir_dengan)]
         
 jane = Person("Jane", "Smith")
 
-print(jane.fullname())
-print(jane.fullname2) # no brackets!
+print(jane.nama_lengkap())
+print(jane.nama_lengkap2)  # tanpa tanda kurung!
 
-print(jane.allowed_titles_starting_with("M"))
-print(Person.allowed_titles_starting_with("M"))
+print(jane.judul_diperbolehkan_yang_dimulai_dengan("M"))
+print(Person.judul_diperbolehkan_yang_dimulai_dengan("M"))
 
-print(jane.allowed_titles_ending_with("s"))
-print(Person.allowed_titles_ending_with("s"))
+print(jane.judul_diperbolehkan_yang_berakhir_dengan("s"))
+print(Person.judul_diperbolehkan_yang_berakhir_dengan("s"))
