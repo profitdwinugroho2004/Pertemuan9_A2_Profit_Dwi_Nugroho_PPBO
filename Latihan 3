@@ -1,0 +1,23 @@
+from collections import namedtuple
+
+# a. Buat namedtuple Koordinat dengan dua elemen: x dan y
+Koordinat = namedtuple('Koordinat', ['x', 'y'])
+
+# b. Buat instance namedtuple Koordinat dengan nama titik1 dan nilai x = 2, y = 4
+titik1 = Koordinat(x=2, y=4)
+
+# c. Panggil elemen namedtuple titik1 dengan 3 cara: indeks elemen, field name, getattr()
+# Menggunakan indeks elemen
+print("Menggunakan indeks elemen:")
+print("Nilai x:", titik1[0])  # Output: Nilai x: 2
+print("Nilai y:", titik1[1])  # Output: Nilai y: 4
+
+# Menggunakan field name
+print("\nMenggunakan field name:")
+print("Nilai x:", titik1.x)  # Output: Nilai x: 2
+print("Nilai y:", titik1.y)  # Output: Nilai y: 4
+
+# Menggunakan getattr()
+print("\nMenggunakan getattr():")
+print("Nilai x:", getattr(titik1, 'x'))  # Output: Nilai x: 2
+print("Nilai y:", getattr(titik1, 'y'))  # Output: Nilai y: 4
