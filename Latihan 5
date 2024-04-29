@@ -1,0 +1,28 @@
+from collections import namedtuple
+
+def tambahkan_metode(cls):
+    def dekorator(func):
+        setattr(cls, func.__name__, func)
+        return func
+    return dekorator
+
+# Definisi namedtuple Orang dengan field nama dan anak
+Orang = namedtuple('Orang', ['nama', 'anak'])
+
+# Menggunakan class decorator untuk menambahkan metode tampilkan_info
+@tambahkan_metode(Orang)
+def tampilkan_info(self):
+    print("-----------")
+    print("Nama :", self.nama)
+    print("-----------")
+    print("Nama anak :")
+    print("-----------")
+    for i, nama_anak in enumerate(self.anak, start=1):
+        print(f"{i}. {nama_anak}")
+        print("-----------")
+
+# Membuat instance Orang
+orang1 = Orang('Budi', ['Ani', 'Joko', 'Rina'])
+
+# Memanggil metode tampilkan_info
+orang1.tampilkan_info()
