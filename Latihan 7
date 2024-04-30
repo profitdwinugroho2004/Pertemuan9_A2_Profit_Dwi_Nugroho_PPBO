@@ -1,0 +1,16 @@
+from collections import namedtuple
+
+# Mendefinisikan namedtuple dengan nama 'Mahasiswa' dan atribut 'nama', 'usia', dan 'jurusan'
+Mahasiswa = namedtuple('Mahasiswa', ['nama', 'usia', 'jurusan'])
+
+# Membuat instance objek berdasarkan namedtuple 'Mahasiswa'
+mahasiswa1 = Mahasiswa('Agus', 20, 'Teknologi Rekayasa Internet')
+mahasiswa2 = Mahasiswa('Andi', 22, 'Teknologi Rekayasa Perangkat Lunak')
+
+# Mengakses atribut objek menggunakan nama atribut
+print("Nama mahasiswa pertama:", mahasiswa1.nama)
+print("Usia mahasiswa pertama:", mahasiswa2.usia)
+print("Nama mahasiswa kedua:", mahasiswa2.nama)
+print("Usia mahasiswa kedua:", mahasiswa2.usia)
+print("Jurusan mahasiswa pertama:", mahasiswa2.jurusan)
+print("Jurusan mahasiswa kedua:", mahasiswa2.jurusan)
