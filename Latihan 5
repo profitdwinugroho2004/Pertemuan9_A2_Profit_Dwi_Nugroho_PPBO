@@ -1,28 +1,36 @@
 from collections import namedtuple
 
-def tambahkan_metode(cls):
-    def dekorator(func):
-        setattr(cls, func.__name__, func)
-        return func
-    return dekorator
+# Fungsi decorator untuk menambahkan metode ke dalam namedtuple
+def tambahkan_metode(namedtuple_cls):
+    class OrangWithMethods(namedtuple_cls):
+        def tampilkan_info(self):
+            print("Nama:", self.nama)
+            print("Nama anak:")
+            for i, anak in enumerate(self.anak, 1):
+                print(f"{i}. {anak}")
+    
+    return OrangWithMethods
 
-# Definisi namedtuple Orang dengan field nama dan anak
-Orang = namedtuple('Orang', ['nama', 'anak'])
+# Mendefinisikan namedtuple Orang dengan metode tambahkan_metode
+Orang = tambahkan_metode(namedtuple("Orang", "nama anak"))
 
-# Menggunakan class decorator untuk menambahkan metode tampilkan_info
-@tambahkan_metode(Orang)
-def tampilkan_info(self):
-    print("-----------")
-    print("Nama :", self.nama)
-    print("-----------")
-    print("Nama anak :")
-    print("-----------")
-    for i, nama_anak in enumerate(self.anak, start=1):
-        print(f"{i}. {nama_anak}")
-        print("-----------")
+# Membuat instance objek john
+john = Orang("John Doe", ["Timmy", "Jimmy"])
 
-# Membuat instance Orang
-orang1 = Orang('Budi', ['Ani', 'Joko', 'Rina'])
+# Mencetak nilai objek john
+print(john)
+
+# Menampilkan ID dari atribut anak sebelum modifikasi
+print("ID sebelum modifikasi:", id(john.anak))
 
 # Memanggil metode tampilkan_info
-orang1.tampilkan_info()
+john.tampilkan_info()
+
+# Menambahkan "Tina" ke dalam daftar anak-anak
+john.anak.append("Tina")
+
+# Mencetak nilai objek john setelah modifikasi
+print(john)
+
+# Menampilkan ID dari atribut anak setelah modifikasi
+print("ID setelah modifikasi:", id(john.anak))
